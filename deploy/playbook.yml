@@ -1,0 +1,62 @@
+---
+- hosts: all
+  sudo: true
+  vars:
+    template_path: "templates"
+    files_path: "/vagrant/deploy/files"
+    proxy_host: "proxy.unlu.edu.ar"
+    proxy_port: 8080
+    proxy_apt: "http://{{ proxy_host }}:{{ proxy_port }}/"
+    pg_version: 9.3
+    pg_port: 5432
+    pg_pass: ""
+    toba_version: 2.6
+    toba_db_nombre: toba_{{toba_version}}
+    toba_home: /vagrant/toba/{{toba_version}}
+    id_desarrollador_toba: 17
+    use_proxy: "yes"
+  tasks:
+    - name: Set System Encoding
+      shell: echo LC_ALL="en_US.UTF-8" >> /etc/environment
+    - name: Set Proxy apt
+      template:
+        src={{template_path}}/proxy.conf.j2
+        dest=/etc/apt/apt.conf.d/proxy.conf
+      when: use_proxy == "yes"
+    - name: update apt cache
+      apt: update_cache=yes
+    - name: upgrade packages
+      apt: upgrade=full
+    - name: Install LAPP env
+      apt: name={{ item }} state=present
+      with_items:
+        - apache2
+        - postgresql-{{ pg_version }}
+        - php5
+        - subversion
+        - php5-pgsql
+        - php5-gd
+        - graphviz
+        - htop
+        - mc
+    - name: Change Apache User
+      shell: patch /etc/apache2/envvars {{ files_path }}/envvars.patch
+    - name: set Apache ServerName
+      shell: echo "ServerName localhost" >> /etc/apache2/apache2.conf
+    - name: config Postgresql User
+      shell: patch /etc/postgresql/{{ pg_version }}/main/pg_hba.conf {{ files_path }}/pg_hba.patch
+    - name: Restart Services
+      service: name={{ item }} state=restarted
+      with_items:
+        - apache2
+        - postgresql
+    - name: Set SVN Proxy
+      template:
+        src={{template_path}}/subversion_servers.j2
+        dest=/etc/subversion/servers
+      when: use_proxy == "yes"
+    - name: Descarga SIU - Toba
+      subversion: repo=https://repositorio.siu.edu.ar/svn/toba/trunk_versiones/{{toba_version}}/ dest={{toba_home}}
+    - { include: "tasks/toba.yml" }
+    - name: Restart Services
+      service: name=apache2 state=restarted

@@ -1,0 +1,11 @@
+- name: Instalar Toba
+  script: install_toba.sh
+  sudo: yes
+  environment:
+    NOMBRE_BASE: "{{toba_db_nombre}}"
+    TOBA_HOME: "{{toba_home}}"
+    TOBA_ID_DESARROLLADOR: "{{id_desarrollador_toba}}"
+    PG_PASS: "{{pg_pass}}"
+    TOBA_PASS: "toba"
+    HOME: "{{toba_home}}"
+    PG_PORT: "{{pg_port}}"
