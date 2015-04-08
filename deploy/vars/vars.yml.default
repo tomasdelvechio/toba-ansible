@@ -3,7 +3,7 @@ template_path: "templates"
 files_path: "/vagrant/deploy/files"
 proxy_host: ""
 proxy_port: 
-proxy_apt: ""
+proxy_apt: "http://{{ proxy_host }}:{{ proxy_port }}/"
 pg_version: 9.3
 pg_port: 5432
 pg_pass: ""
