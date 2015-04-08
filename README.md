@@ -4,7 +4,7 @@ Playbooks de [Ansible](http://www.ansible.com/) para hacer deploy de entornos LA
 
 # Software
 
-Usando [Vagrant](https://www.vagrantup.com/), se descarga una version de [Ubuntu Trusty 64](https://atlas.hashicorp.com/ubuntu/boxes/trusty64) y se crea la Maquina Virtual con [Virtualbox](https://www.virtualbox.org/). Luego se ejecuta un [Playbook](http://docs.ansible.com/playbooks.html) de Ansible que configura la VM instalando un entorno LAPP y SIU-Toba.
+Usando [Vagrant](https://www.vagrantup.com/), se descarga una versión de [Ubuntu Trusty 64](https://atlas.hashicorp.com/ubuntu/boxes/trusty64) y se crea la Maquina Virtual con [Virtualbox](https://www.virtualbox.org/). Luego se ejecuta un [Playbook](http://docs.ansible.com/playbooks.html) de Ansible que configura la VM instalando un entorno LAPP y SIU-Toba.
 
 # Prerrequisitos
 
@@ -17,7 +17,7 @@ Se requiere tener instalado y funcionando el siguiente software
 
 # Features
 
-Hasta el momento, se contemplan las siguientes caracteristicas:
+Hasta el momento, se contemplan las siguientes características:
 
 ## Parametrizaciones
 
@@ -25,13 +25,13 @@ Se proveen parametrizaciones para los siguientes softwares
 
 ### Postgres
 
-- Version a instalar
+- Versión a instalar
 - Puerto y Password
 
 ### Toba
 
-- Version a descargar
-- Carpeta de instalacion
+- Versión a descargar
+- Carpeta de instalación
 - Id de desarrollo
 - Base de Metadatos
 
@@ -52,6 +52,6 @@ El playbook realiza las siguientes tareas:
 6. Descarga SIU-Toba desde el SVN del proyecto (Rama de versiones de desarrollo)
 7. Instala SIU-Toba y publica el Toba Editor en Apache2
 
-## Nuevas Caracteristicas
+## Nuevas Características
 
-Se iran agregando nuevas caracteristicas en futuras versiones. Para proponer mejoras, se aceptan Issues y Pull Requests.
+Se iran agregando nuevas características en futuras versiones. Para proponer mejoras, se aceptan Issues y Pull Requests.
