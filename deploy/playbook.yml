@@ -1,20 +1,8 @@
 ---
 - hosts: all
   sudo: true
-  vars:
-    template_path: "templates"
-    files_path: "/vagrant/deploy/files"
-    proxy_host: "proxy.unlu.edu.ar"
-    proxy_port: 8080
-    proxy_apt: "http://{{ proxy_host }}:{{ proxy_port }}/"
-    pg_version: 9.3
-    pg_port: 5432
-    pg_pass: ""
-    toba_version: 2.6
-    toba_db_nombre: toba_{{toba_version}}
-    toba_home: /vagrant/toba/{{toba_version}}
-    id_desarrollador_toba: 17
-    use_proxy: "yes"
+  vars_files:
+    - [ "vars/vars.yml", "vars/vars.yml.default"]
   tasks:
     - name: Set System Encoding
       shell: echo LC_ALL="en_US.UTF-8" >> /etc/environment

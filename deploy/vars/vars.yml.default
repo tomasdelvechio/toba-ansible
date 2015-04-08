@@ -1,0 +1,14 @@
+---
+template_path: "templates"
+files_path: "/vagrant/deploy/files"
+proxy_host: ""
+proxy_port: 
+proxy_apt: ""
+pg_version: 9.3
+pg_port: 5432
+pg_pass: ""
+toba_version: 2.6
+toba_db_nombre: toba_{{toba_version}}
+toba_home: /vagrant/toba/{{toba_version}}
+id_desarrollador_toba: 0
+use_proxy: "no"

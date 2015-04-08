@@ -1,2 +1,3 @@
 toba/
 .vagrant/
+deploy/vars/vars.yml

@@ -10,10 +10,32 @@ Usando [Vagrant](https://www.vagrantup.com/), se descarga una versión de [Ubunt
 
 Se requiere tener instalado y funcionando el siguiente software
 
+- Git
 - Virtualbox
 - Vagrant
 - Ansible
 - VM de [Ubuntu Trusty 64](https://atlas.hashicorp.com/ubuntu/boxes/trusty64)
+
+# Instalación
+
+Clonar este proyecto
+
+`git clone https://github.com/tomasdelvechio/toba-ansible.git ~/toba_ansible`
+
+Luego levantar la VM con Vagrant
+
+```
+cd ~/toba_ansible
+vagrant up
+```
+
+## Archivo de parametros
+
+Las variables de parametrización de los servicios se pueden encontrar en `<copia local>/deploy/vars/vars.yml.default`
+
+Si se quiere sobreescribir los valores, se aconseja generar una copia del archivo y nombrarlo `vars.yml`. El playbook carga este ultimo archivo, si existe, y en caso contrario, levanta el archivo de los valores por default.
+
+el archivo `vars.yml` se encuentra ignorado por Git.
 
 # Features
 
