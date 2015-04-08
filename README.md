@@ -33,7 +33,7 @@ vagrant up
 
 Las variables de parametrización de los servicios se pueden encontrar en `<copia local>/deploy/vars/vars.yml.default`
 
-Si se quiere sobreescribir los valores, se aconseja generar una copia del archivo y nombrarlo `vars.yml`. El playbook carga este ultimo archivo, si existe, y en caso contrario, levanta el archivo de los valores por default.
+Si se quiere sobreescribir los valores (Para configurar un proxy, por ejemplo), se aconseja generar una copia del archivo y nombrarlo `vars.yml`. El playbook carga este ultimo archivo, si existe, y en caso contrario, levanta el archivo de los valores por default.
 
 el archivo `vars.yml` se encuentra ignorado por Git.
 
