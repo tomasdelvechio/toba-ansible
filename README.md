@@ -29,6 +29,17 @@ cd ~/toba_ansible
 vagrant up
 ```
 
+Cuando finaliza el comando, se deberia poder acceder al Toba Editor con la URL http://localhost:8080/toba_editor/2.6
+
+Actualmente no se esta creando ningun proyecto nuevo, con lo cual, se debe ingresar a la VM y crear el proyecto desde la instalacion de Toba.
+
+```
+cd ~/toba_ansible
+vagrant ssh
+cd /vagrant/toba/2.6/bin/
+./toba proyecto crear -p nombre_proyecto -i desarrollo
+```
+
 ## Archivo de parametros
 
 Las variables de parametrización de los servicios se pueden encontrar en `<copia local>/deploy/vars/vars.yml.default`
