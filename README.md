@@ -40,6 +40,18 @@ Se proveen parametrizaciones para los siguientes softwares
 - Parametro para usar proxy o ignorarlo
 - URL y Puerto del proxy
 
-## Configuraciones
+## Tareas
 
+El playbook realiza las siguientes tareas:
 
+1. Configura las locales (Si esto no se hace, Postgres no crea el cluster)
+2. Actualiza la lista de paquetes (Configura el Proxy si se indica)
+3. Actualiza los paquetes del sistema que se necesiten actualizar
+4. Instala el entorno LAPP, SVN y otras dependencias utiles
+5. Configura Apache y Postgres
+6. Descarga SIU-Toba desde el SVN del proyecto (Rama de versiones de desarrollo)
+7. Instala SIU-Toba y publica el Toba Editor en Apache2
+
+## Nuevas Caracteristicas
+
+Se iran agregando nuevas caracteristicas en futuras versiones. Para proponer mejoras, se aceptan Issues y Pull Requests.
