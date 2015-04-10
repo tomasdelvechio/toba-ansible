@@ -1,0 +1,4 @@
+---
+pg_version: 9.3
+pg_port: 5432
+pg_pass: ""

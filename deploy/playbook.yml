@@ -2,49 +2,22 @@
 - hosts: all
   sudo: true
   vars_files:
-    - [ "vars/vars.yml", "vars/vars.yml.default"]
+    - [ "vars/vars.yml", "vars/vars.yml.default" ]
+    - [ "vars/apt.yml", "vars/apt.yml.default" ]
+    - [ "vars/postgresql.yml", "vars/postgresql.yml.default" ]
+    - [ "vars/toba.yml", "vars/toba.yml.default" ]
   tasks:
     - name: Set System Encoding
       shell: echo LC_ALL="en_US.UTF-8" >> /etc/environment
-    - name: Set Proxy apt
-      template:
-        src={{template_path}}/proxy.conf.j2
-        dest=/etc/apt/apt.conf.d/proxy.conf
-      when: use_proxy == "yes"
-    - name: update apt cache
-      apt: update_cache=yes
-    - name: upgrade packages
-      apt: upgrade=full
-    - name: Install LAPP env
-      apt: name={{ item }} state=present
-      with_items:
-        - apache2
-        - postgresql-{{ pg_version }}
-        - php5
-        - subversion
-        - php5-pgsql
-        - php5-gd
-        - graphviz
-        - htop
-        - mc
-    - name: Change Apache User
-      shell: patch /etc/apache2/envvars {{ files_path }}/envvars.patch
-    - name: set Apache ServerName
-      shell: echo "ServerName localhost" >> /etc/apache2/apache2.conf
-    - name: config Postgresql User
-      shell: patch /etc/postgresql/{{ pg_version }}/main/pg_hba.conf {{ files_path }}/pg_hba.patch
+    - { include: "tasks/apt.yml" }
+    - { include: "tasks/apache2.yml" }
+    - { include: "tasks/postgresql.yml" }
     - name: Restart Services
       service: name={{ item }} state=restarted
       with_items:
         - apache2
         - postgresql
-    - name: Set SVN Proxy
-      template:
-        src={{template_path}}/subversion_servers.j2
-        dest=/etc/subversion/servers
-      when: use_proxy == "yes"
-    - name: Descarga SIU - Toba
-      subversion: repo=https://repositorio.siu.edu.ar/svn/toba/trunk_versiones/{{toba_version}}/ dest={{toba_home}}
+    - { include: "tasks/svn.yml" }
     - { include: "tasks/toba.yml" }
     - name: Restart Services
       service: name=apache2 state=restarted

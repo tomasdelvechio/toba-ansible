@@ -1,0 +1,5 @@
+- name: Set SVN Proxy
+  template:
+    src={{template_path}}/subversion_servers.j2
+    dest=/etc/subversion/servers
+  when: use_proxy == "yes"

@@ -1,0 +1,2 @@
+- name: config Postgresql User
+  shell: patch /etc/postgresql/{{ pg_version }}/main/pg_hba.conf {{ files_path }}/pg_hba.patch
