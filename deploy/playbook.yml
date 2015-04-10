@@ -12,12 +12,8 @@
     - { include: "tasks/apt.yml" }
     - { include: "tasks/apache2.yml" }
     - { include: "tasks/postgresql.yml" }
-    - name: Restart Services
-      service: name={{ item }} state=restarted
-      with_items:
-        - apache2
-        - postgresql
+    - { include: "handlers/services.yml", service: 'apache2', action: "restarted"}
+    - { include: "handlers/services.yml", service: 'postgresql', action: "restarted"}
     - { include: "tasks/svn.yml" }
     - { include: "tasks/toba.yml" }
-    - name: Restart Services
-      service: name=apache2 state=restarted
+    - { include: "handlers/services.yml", service: 'apache2', action: "restarted"}
