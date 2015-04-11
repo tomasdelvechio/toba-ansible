@@ -40,6 +40,10 @@ cd /vagrant/toba/2.6/bin/
 ./toba proyecto crear -p nombre_proyecto -i desarrollo
 ```
 
+Si se quieren ir realizando cambios en los Playbooks y destruir y crear de cero la VM, se puede hacer todo en una linea, dentro de la carpeta del proyecto clonado:
+
+`vagrant destroy -f && vagrant up`
+
 ## Archivo de parametros
 
 Las variables de parametrización de los servicios se pueden encontrar en `<copia local>/deploy/vars/vars.yml.default`
