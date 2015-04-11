@@ -88,3 +88,20 @@ El playbook realiza las siguientes tareas:
 ## Nuevas Características
 
 Se iran agregando nuevas características en futuras versiones. Para proponer mejoras, se aceptan Issues y Pull Requests.
+
+# Troubleshooting
+
+## Vagrant no ejecuta el Playbook
+
+El error que aparece en estos casos es:
+
+```
+The executable 'ansible-playbook' Vagrant is trying to run was not
+found in the PATH variable. This is an error. Please verify
+this software is installed and on the path.
+
+```
+
+Este error ocurre porque ansible no esta instalado en el Host. Se resuelve simplemente instalando Ansible. Si nuestro Host es Ubuntu:
+
+`sudo aptitude install ansible`
