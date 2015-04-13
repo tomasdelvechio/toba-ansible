@@ -12,6 +12,7 @@
     - { include: "tasks/apt.yml" }
     - { include: "tasks/apache2.yml" }
     - { include: "tasks/postgresql.yml" }
+    - { include: "tasks/php.yml" }
     - { include: "handlers/services.yml", service: 'apache2', action: "restarted"}
     - { include: "handlers/services.yml", service: 'postgresql', action: "restarted"}
     - { include: "tasks/svn.yml" }

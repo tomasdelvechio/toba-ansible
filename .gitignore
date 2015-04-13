@@ -2,3 +2,4 @@ toba/
 .vagrant/
 deploy/vars/vars.yml
 deploy/vars/apt.yml
+deploy/vars/toba.yml

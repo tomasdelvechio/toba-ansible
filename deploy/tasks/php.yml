@@ -1,0 +1,4 @@
+- name: Config PHP (CLI)
+  shell: patch /etc/php5/cli/php.ini {{ files_path }}/php.ini.patch
+- name: Config PHP (Apache2)
+  shell: patch /etc/php5/apache2/php.ini {{ files_path }}/php.ini.patch
