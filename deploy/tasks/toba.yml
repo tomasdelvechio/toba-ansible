@@ -1,5 +1,9 @@
+- name: Verifica si la Version de Toba ya fue descargada
+  stat: path={{toba_home}}
+  register: path
 - name: Descarga SIU - Toba
   subversion: repo=https://repositorio.siu.edu.ar/svn/toba/trunk_versiones/{{toba_version}}/ dest={{toba_home}}
+  when: not (path.stat.isdir is defined and path.stat.isdir)
 - name: Instalar Toba
   script: install_toba.sh
   sudo: yes
