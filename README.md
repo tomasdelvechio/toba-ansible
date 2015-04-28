@@ -71,6 +71,7 @@ Se proveen parametrizaciones para los siguientes softwares
 - Carpeta de instalación
 - Id de desarrollo
 - Base de Metadatos
+- Nombre de la isntalación
 
 ### Proxy
 
