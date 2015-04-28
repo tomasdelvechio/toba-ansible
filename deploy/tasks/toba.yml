@@ -6,6 +6,7 @@
   when: not (path.stat.isdir is defined and path.stat.isdir)
 - name: Instalar Toba
   script: install_toba.sh
+  when: toba_version == 2.6
   sudo: yes
   environment:
     NOMBRE_BASE: "{{toba_db_nombre}}"
@@ -15,3 +16,16 @@
     TOBA_PASS: "toba"
     HOME: "{{toba_home}}"
     PG_PORT: "{{pg_port}}"
+- name: Instalar Toba
+  script: install_toba_new.sh
+  sudo: yes
+  environment:
+    NOMBRE_BASE: "{{toba_db_nombre}}"
+    TOBA_HOME: "{{toba_home}}"
+    TOBA_ID_DESARROLLADOR: "{{id_desarrollador_toba}}"
+    PG_PASS: "{{pg_pass}}"
+    TOBA_PASS: "toba"
+    HOME: "{{toba_home}}"
+    PG_PORT: "{{pg_port}}"
+    TOBA_INSTALACION_NAME: "{{toba_instalacion_name}}"
+  when: toba_version != 2.6
