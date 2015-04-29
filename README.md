@@ -60,20 +60,23 @@ Hasta el momento, se contemplan las siguientes características:
 
 Se proveen parametrizaciones para los siguientes softwares
 
-### Postgres
+### Postgres (deploy/vars/postgresql.yml.default)
 
 - Versión a instalar
 - Puerto y Password
 
-### Toba
+### Toba  (deploy/vars/toba.yml.default)
 
 - Versión a descargar
 - Carpeta de instalación
 - Id de desarrollo
 - Base de Metadatos
-- Nombre de la isntalación
+- Nombre de la instalación
+- Proyectos
+ - Proyectos nuevos
+ - Proyectos existentes en un repositorio SVN
 
-### Proxy
+### Proxy (deploy/vars/vars.yml.default)
 
 - Parametro para usar proxy o ignorarlo
 - URL y Puerto del proxy
