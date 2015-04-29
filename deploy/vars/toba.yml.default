@@ -4,3 +4,14 @@ toba_db_nombre: toba_{{toba_version}}
 toba_home: /vagrant/toba/{{toba_version}}
 id_desarrollador_toba: 0
 toba_instalacion_name: dev
+# Dic para cargar proyectos al momento de la carga.
+#proyectos:
+    #proyecto_nuevo:
+    #    nombre: "Prueba"
+    # Ejemplo de proyecto descargado desde SVN
+    #otro_proyecto_mas:
+    #    nombre: "nombre_proyecto"
+    #    url: "http://domain/trunk"
+    #    method: "svn"
+    #    username: "svn_repo_username"
+    #    password: "svn_repo_password"
