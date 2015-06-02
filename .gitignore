@@ -3,3 +3,4 @@ toba/
 deploy/vars/vars.yml
 deploy/vars/apt.yml
 deploy/vars/toba.yml
+packer_cache/
