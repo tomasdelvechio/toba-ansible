@@ -1,5 +1,9 @@
+- name: Verifica si la Version de Toba ya fue descargada
+  stat: path={{toba_home}}
+  register: path
 - name: Descarga SIU - Toba
   subversion: repo=https://repositorio.siu.edu.ar/svn/toba/trunk_versiones/{{toba_version}}/ dest={{toba_home}}
+  when: not (path.stat.isdir is defined and path.stat.isdir)
 - name: Instalar Toba
   script: install_toba.sh
   sudo: yes
@@ -11,3 +15,29 @@
     TOBA_PASS: "toba"
     HOME: "{{toba_home}}"
     PG_PORT: "{{pg_port}}"
+  when: toba_version == 2.6
+- name: Instalar Toba
+  script: install_toba_new.sh
+  sudo: yes
+  environment:
+    NOMBRE_BASE: "{{toba_db_nombre}}"
+    TOBA_HOME: "{{toba_home}}"
+    TOBA_ID_DESARROLLADOR: "{{id_desarrollador_toba}}"
+    PG_PASS: "{{pg_pass}}"
+    TOBA_PASS: "toba"
+    HOME: "{{toba_home}}"
+    PG_PORT: "{{pg_port}}"
+    TOBA_INSTALACION_NAME: "{{toba_instalacion_name}}"
+  when: toba_version != 2.6
+- name: Descargar proyectos via SVN 
+  subversion: repo={{item.value.url}} dest={{toba_home}}/proyectos/{{item.value.nombre}} username={{item.value.username}} password={{item.value.password}}
+  with_dict: proyectos
+  when: item.value.method is defined and item.value.method == "svn"
+- name: Cargar proyectos descargados
+  shell: printf "\n" | {{toba_home}}/bin/toba proyecto cargar -p {{item.value.nombre}} -i desarrollo
+  with_dict: proyectos
+  when: item.value.method is defined
+- name: Crear proyectos
+  shell: printf "\n" | {{toba_home}}/bin/toba proyecto crear -p {{item.value.nombre}} -i desarrollo
+  with_dict: proyectos
+  when: item.value.method is not defined

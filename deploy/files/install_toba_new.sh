@@ -14,7 +14,7 @@ echo "start ======== ${TOBA_ID_DESARROLLADOR}" > /tmp/log
 ID_TOBA=${TOBA_ID_DESARROLLADOR}
 echo -n ${PG_PASS} > /tmp/clave_pg
 echo -n ${TOBA_PASS} > /tmp/clave_toba
-printf "\n" | ${TOBA_HOME}/bin/instalar -d ${ID_TOBA} -t 0 -h localhost -p ${PG_PORT} -u postgres -b ${NOMBRE_BASE} -c /tmp/clave_pg -k /tmp/clave_toba >> /tmp/log
+printf "\n" | ${TOBA_HOME}/bin/instalar -d ${ID_TOBA} -t 0 -n ${TOBA_INSTALACION_NAME} -h localhost -p ${PG_PORT} -u postgres -b ${NOMBRE_BASE} -c /tmp/clave_pg -k /tmp/clave_toba >> /tmp/log
 
 rm /tmp/clave_pg /tmp/clave_toba
 

@@ -6,7 +6,7 @@
 - name: update apt cache
   apt: update_cache=yes
 - name: upgrade packages
-  apt: upgrade=full
+  apt: upgrade=safe
 - name: Install LAPP env
   apt: name={{ item }} state=present
   with_items:

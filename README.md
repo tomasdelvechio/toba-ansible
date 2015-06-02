@@ -60,19 +60,23 @@ Hasta el momento, se contemplan las siguientes características:
 
 Se proveen parametrizaciones para los siguientes softwares
 
-### Postgres
+### Postgres (deploy/vars/postgresql.yml.default)
 
 - Versión a instalar
 - Puerto y Password
 
-### Toba
+### Toba  (deploy/vars/toba.yml.default)
 
 - Versión a descargar
 - Carpeta de instalación
 - Id de desarrollo
 - Base de Metadatos
+- Nombre de la instalación
+- Proyectos
+ - Proyectos nuevos
+ - Proyectos existentes en un repositorio SVN
 
-### Proxy
+### Proxy (deploy/vars/vars.yml.default)
 
 - Parametro para usar proxy o ignorarlo
 - URL y Puerto del proxy
@@ -109,3 +113,16 @@ this software is installed and on the path.
 Este error ocurre porque ansible no esta instalado en el Host. Se resuelve simplemente instalando Ansible. Si nuestro Host es Ubuntu:
 
 `sudo aptitude install ansible`
+
+## Problemas con el modulo apache2_module
+
+El error es
+
+```
+ERROR: apache2_module is not a legal parameter in an Ansible task or handler
+Ansible failed to complete successfully. Any error output should be
+visible above. Please fix these errors and try again.
+
+```
+
+Este problema sucede por tener una versión de Ansible antigua. En estos casos, lo mejor es seguir la [indicación oficial de Ansible](http://docs.ansible.com/intro_installation.html) para tener instalada la ultima versión. Para Ubuntu, [leer acá](http://docs.ansible.com/intro_installation.html#latest-releases-via-apt-ubuntu).

@@ -4,4 +4,5 @@ files_path: "/vagrant/deploy/files"
 proxy_host: ""
 proxy_port: 
 proxy_apt: "http://{{ proxy_host }}:{{ proxy_port }}/"
+proxy_exceptions:
 use_proxy: "no"

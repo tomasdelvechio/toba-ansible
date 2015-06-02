@@ -2,3 +2,5 @@
   shell: patch /etc/apache2/envvars {{ files_path }}/envvars.patch
 - name: set Apache ServerName
   shell: echo "ServerName localhost" >> /etc/apache2/apache2.conf
+- name: Enabled mod_rewrite
+  apache2_module: state=present name=rewrite
