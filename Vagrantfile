@@ -124,4 +124,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "ansible" do |ansible|
       ansible.playbook = "deploy/playbook.yml"
   end
+
+  # Vagrant cachier
+  if Vagrant.has_plugin?("vagrant-cachier")
+  	config.cache.scope = :box
+  end
 end
