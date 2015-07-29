@@ -16,5 +16,6 @@
     - { include: "handlers/services.yml", service: 'apache2', action: "restarted"}
     - { include: "handlers/services.yml", service: 'postgresql', action: "restarted"}
     - { include: "tasks/svn.yml" }
+    - { include: "tasks/composer.yml" }
     - { include: "tasks/toba.yml" }
     - { include: "handlers/services.yml", service: 'apache2', action: "restarted"}
