@@ -31,13 +31,13 @@
   when: toba_version != 2.6
 - name: Descargar proyectos via SVN 
   subversion: repo={{item.value.url}} dest={{toba_home}}/proyectos/{{item.value.nombre}} username={{item.value.username}} password={{item.value.password}}
-  with_dict: proyectos
+  with_dict: proyectos | default({})
   when: item.value.method is defined and item.value.method == "svn"
 - name: Cargar proyectos descargados
   shell: printf "\n" | {{toba_home}}/bin/toba proyecto cargar -p {{item.value.nombre}} -i desarrollo
-  with_dict: proyectos
+  with_dict: proyectos | default({})
   when: item.value.method is defined
 - name: Crear proyectos
   shell: printf "\n" | {{toba_home}}/bin/toba proyecto crear -p {{item.value.nombre}} -i desarrollo
-  with_dict: proyectos
+  with_dict: proyectos | default({})
   when: item.value.method is not defined
